@@ -1,0 +1,122 @@
+/*
+The container element has two columns
+The container's second column is 4 times larger than the first column
+The container element has a gap of 4px
+
+The header and footer span across both columns
+The sidebar only spans across the first column
+The nav and article elements only span across the second column
+*/
+.container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr 1fr 3fr 1fr;
+    grid-template-areas:
+        'header header'
+        'sidebar nav'
+        'sidebar article'
+        'footer footer';
+    grid-gap: 4px;
+    height: 100vh;
+}
+
+/*
+The header element has two columns
+The ul inside the menu element contains another grid
+*/
+.top {
+    grid-area: header;
+    background: gold;
+
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+    align-items: center;
+}
+
+.header-list {
+    grid-column-start:2;
+    display: inline-grid;
+    grid-template-columns: repeat(4, 1fr);
+    list-style: none;
+}
+
+/*
+The sidebar element has a gap of 50px
+The text elements in the sidebar are centered with grid
+*/
+.sidebar {
+    grid-area: sidebar;
+    background: orange;
+    width:100%;
+
+    display: inline-grid;
+    grid-gap: 50px;
+    grid-template-rows: repeat(4, 1fr);
+    justify-content: center;
+    align-items: center;
+}
+.sidebar div {
+    background: grey;
+    height: 50%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center
+}
+
+/*
+The ul inside the nav element contains another grid
+*/
+.nav {
+    grid-area: nav;
+    background: lightblue;
+    display: grid;
+    justify-items:stretch;
+}
+
+.nav-list {
+    grid-column-start:1;
+    list-style:none;
+    display: inline-grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: start;
+    align-items: center;
+}
+    .nav-list li {
+        text-align: center;
+    }
+
+/*
+The article element should set grid columns using repeat along with the auto-fit and minmax properties
+The article columns should have a minimum value of 250px and a maximum of 1fr unit
+The article element has a gap of 15px
+The card elements inside the article container have a height of 200px
+*/
+
+.article {
+    grid-area: article;
+    background: lightgrey;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 15px;
+    padding: 5% 5%;
+    align-items: center;
+    text-align: center;
+}
+    .article div {
+        min-height: 200px;
+        border-radius: 20px;
+    }
+
+.card {
+    background: white;
+}
+
+.foot {
+    grid-area: footer;
+    background: navy;
+    color: white;
+    font-size: 3em;
+    text-align: center;
+}
